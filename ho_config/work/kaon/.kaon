@@ -1,0 +1,14 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+export kaon_script_path=~/ho_config/work/kaon
+PATH=$kaon_script_path:$PATH
+
+# KAON #
+# For The KAON Project
+# BKO-S200
+source $kaon_script_path/bkos200/.bkos200
+
+work-project
+

@@ -5,8 +5,9 @@
 # Ho Kim
 HISTSIZE=500
 
+export ho_script_path=~/ho_config
 # PATH=~/bin:$PATH
-PATH=~/ho_config:~/bin:$PATH
+PATH=$ho_script_path:~/bin:$PATH
 
 # alias definition
 # alias ls='ls --color=auto'
@@ -16,8 +17,8 @@ alias vdir='vdir --color=auto'
 alias rm='rm -rf'
 alias work-project='cd ~/00_Archive/Project'
 alias work-git='cd ~/00_Archive/00_git_server'
-alias ho-conf='cd ~/ho_config'
-alias ho='. ~/ho_config/work/kaon/bkos200/bkos200.sh'
+alias ho-conf='cd ~/$ho_script_path'
+alias ho='. $bkos200_script_path/bkos200.sh'
 
 #PS1="[\u:\w\a]\\$ "
 #export PS1='\[\033]0;\w\007
@@ -45,16 +46,16 @@ alias c-edit='crontab -e'
 alias c-list='crontab -l'
 alias s-pt='export tmp_save_path=$PWD'
 alias r-pt='cd $tmp_save_path'
-alias s-p='echo $PWD > ~/ho_config/save_path'
-alias r-p='cd $(cat ~/ho_config/save_path)'
-alias s-p0='echo $PWD > ~/ho_config/save_path0'
-alias r-p0='cd $(cat ~/ho_config/save_path0)'
-alias s-p1='echo $PWD > ~/ho_config/save_path1'
-alias r-p1='cd $(cat ~/ho_config/save_path1)'
-alias s-p2='echo $PWD > ~/ho_config/save_path2'
-alias r-p2='cd $(cat ~/ho_config/save_path2)'
-alias s-p3='echo $PWD > ~/ho_config/save_path3'
-alias r-p3='cd $(cat ~/ho_config/save_path3)'
+alias s-p='echo $PWD > ~/$ho_script_path/save_path'
+alias r-p='cd $(cat ~/$ho_script_path/save_path)'
+alias s-p0='echo $PWD > ~/$ho_script_path/save_path0'
+alias r-p0='cd $(cat ~/$ho_script_path/save_path0)'
+alias s-p1='echo $PWD > ~/$ho_script_path/save_path1'
+alias r-p1='cd $(cat ~/$ho_script_path/save_path1)'
+alias s-p2='echo $PWD > ~/$ho_script_path/save_path2'
+alias r-p2='cd $(cat ~/$ho_script_path/save_path2)'
+alias s-p3='echo $PWD > ~/$ho_script_path/save_path3'
+alias r-p3='cd $(cat ~/$ho_script_path/save_path3)'
 alias screen-l='screen -ls'
 alias screen-r='screen -r'
 alias screen-s='screen -S'

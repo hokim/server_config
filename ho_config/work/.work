@@ -3,11 +3,11 @@
 # for examples
 
 # PATH=~/bin:$PATH
-PATH=~/ho_config/work:$PATH
-
-source ~/ho_config/work/git-completion.bash
+export work_script_path=~/ho_config/work
+PATH=$work_script_path:$PATH
 
 # Common
+source $work_script_path/git-completion.bash
 
 # Git Alias
 alias g-br="git branch -a -v"
@@ -27,14 +27,8 @@ alias g-st="git status -sb"
 alias g-tree="git log --graph --decorate --pretty=oneline --abbrev-commit --all"
 
 # KAON
-work-project
-
-# For The KAON Project
-
-#BKO-S200
-source ~/ho_config/work/kaon/bkos200/.bkos200
-
+source $work_script_path/kaon/.kaon
 
 # ExCompany
-#source ~/ho_config/work/ExCompany/.anydata
+#source $work_script_path/ExCompany/.anydata
 
