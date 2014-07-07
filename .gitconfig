@@ -1,0 +1,39 @@
+[color]
+	ui = auto
+[user]
+	email = hokim@kaonmedia.com
+	name = hokim 
+[alias]
+	br = branch -a -v
+	chid = "!f() { git log -1 $1 | grep Change-Id; }; f"
+	chlist = "!f() { git log --name-status --pretty=oneline $1..$2; }; f"
+	ckunpush = log --branches --not --remotes
+	cnt = shortlog -sn
+	cs = commit -s
+	empty-ci = commit --allow-empty
+	#gpush = "!f() { git push $1 HEAD:refs/for/$2; }; f"
+	gpush = "!python ~/gergit/gpush.py $1 $2"
+	l = log -3 HEAD
+	last = log -1 HEAD
+	#lf = log --date-order --date=iso --graph --full-history --all --pretty=format:'%x08%x09%C(red)%h %C(cyan)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08 %C(bold blue)%aN%C(reset)%C(bold yellow)%d %C(reset)%s'
+	lf = log --date-order --date=iso --graph --full-history --all --pretty=format:'%Cred%h%Creset %C(cyan)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08%x08 %C(bold blue)%aN%C(reset)%C(bold yellow)%d %C(reset)%s'
+	#lg = log --pretty=oneline --abbrev-commit --graph --decorate --date=relative
+	lgf = log --name-status --color --abbrev-commit --date=relative --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+	lgt  = log --graph --pretty=format:'%Cred%h%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	lgtt = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
+	ll   = "log --pretty=oneline --abbrev-commit"
+	l1d = "log --since=\"1 day ago\""
+	l2d = "log --since=\"2 days ago\""
+	l1w = "log --since=\"1 week ago\""
+	l2w = "log --since=\"2 weeks ago\""
+	st = status -sb
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	unstage = reset HEAD --
+	vimdiff = difftool -y -t vimdiff
+	#visual = !gitk
+[push]
+	default = matching
+[core]
+	editor = vi
+[merge]
+	tool = vimdiff

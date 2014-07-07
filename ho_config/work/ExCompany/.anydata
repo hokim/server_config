@@ -1,0 +1,27 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# PATH=~/bin:$PATH
+PATH=~/ho_config/work/ExCompany:$PATH
+
+# Common
+alias mk='make -j5'
+alias rvct='source ~/ho_config/work/ExCompany/rvct41.sh'
+alias sr='source ./build/envsetup.sh'
+
+# For The AnyDATA Project
+alias ho_env='source ./build/conf/set_bb_env.sh'
+alias ho_clean='bitbake -c cleanall'
+alias ho_build='bitbake'
+
+
+# ExCompany
+
+# rvct.sh
+#export PATH=$PATH:~/pkg/qct/software/arm-2011.03/bin
+
+#JAVA
+#export PATH=~/pkg/qct/software/java/jdk1.6.0_21/bin:$PATH
+#export JAVA_HOME=/usr/lib/jvm/jdk1.6.0_24
+#export JAVA_HOME=~/pkg/qct/software/java/jdk1.6.0_24

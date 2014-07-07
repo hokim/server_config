@@ -1,0 +1,7 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+alias wshare1='sudo mount -t cifs //192.168.0.222/public ~/For_Public -o username=hokim -o password=stope007 -o iocharset=cp949'
+# alias wshare2='sudo mount -t cifs -o username=administrator,passwd=stope007 //192.168.0.92/Shared_Folder /home/hokim/for-windows/'
+

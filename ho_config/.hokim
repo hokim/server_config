@@ -1,0 +1,67 @@
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# Ho Kim
+HISTSIZE=500
+
+# PATH=~/bin:$PATH
+PATH=~/ho_config:~/bin:$PATH
+
+# alias definition
+# alias ls='ls --color=auto'
+alias dir='dir -laF --color=auto'
+alias vdir='vdir --color=auto'
+
+alias rm='rm -rf'
+alias work-project='cd ~/00_Archive/Project'
+alias work-git='cd ~/00_Archive/00_git_server'
+alias ho-conf='cd ~/ho_config'
+alias ho='. ~/ho_config/work/kaon/bkos200/bkos200.sh'
+
+#PS1="[\u:\w\a]\\$ "
+#export PS1='\[\033]0;\w\007
+#\033[32m\]\u@\h \[\033[33m\w\033[0m\]
+#$ '
+
+export PS1='\[\033]0;\W\007
+\033[32m\]\u(\h) \[\033[33m\w\033[0m\]
+$ '
+
+# Ho Kim's alias
+alias touch-all='find . -name "*.c" -exec touch {} \;'
+alias touch-file='touch *.c'
+alias oktar='tar cvzfp'
+alias untar='tar xvzfp'
+alias soktar='sudo tar cvzfp'
+alias suntar='sudo tar xvzfp'
+alias ok7z='7zr a -r'
+alias un7z='7zr x'
+alias ..='cd ..'
+alias ....='cd ../..'
+alias ~='cd ~'
+alias c-clear='crontab -r'
+alias c-edit='crontab -e'
+alias c-list='crontab -l'
+alias s-pt='export tmp_save_path=$PWD'
+alias r-pt='cd $tmp_save_path'
+alias s-p='echo $PWD > ~/ho_config/save_path'
+alias r-p='cd $(cat ~/ho_config/save_path)'
+alias s-p0='echo $PWD > ~/ho_config/save_path0'
+alias r-p0='cd $(cat ~/ho_config/save_path0)'
+alias s-p1='echo $PWD > ~/ho_config/save_path1'
+alias r-p1='cd $(cat ~/ho_config/save_path1)'
+alias s-p2='echo $PWD > ~/ho_config/save_path2'
+alias r-p2='cd $(cat ~/ho_config/save_path2)'
+alias s-p3='echo $PWD > ~/ho_config/save_path3'
+alias r-p3='cd $(cat ~/ho_config/save_path3)'
+alias screen-l='screen -ls'
+alias screen-r='screen -r'
+alias screen-s='screen -S'
+
+alias ho-clone='git clone git@github.com:hokim/server_config.git'
+
+# ---------
+#alias ssh_sw4_3='ssh hokim@10.10.10.13'
+#alias sw4_3_mount='sudo mount -t nfs -o nolock 10.10.10.13:/home/hokim/work /home/hokim/sw4_3_work'
+#alias sw4_3_umount='sudo umount 10.10.10.13:/home/hokim/work'
