@@ -15,8 +15,8 @@ alias dir='dir -laF --color=auto'
 alias vdir='vdir --color=auto'
 
 alias rm='rm -rf'
-alias work-project='cd ~/00_Archive/Project'
-alias work-git='cd ~/00_Archive/00_git_server'
+alias work-project='cd ~/archive/Project'
+alias work-git='cd ~/archive/00_git_server'
 alias ho-conf='cd ~/$ho_script_path'
 alias ho='. $bkos200_script_path/bkos200.sh'
 

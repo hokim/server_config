@@ -8,7 +8,7 @@ PATH=$excompany_script_path:$PATH
 
 # Common
 alias mk='make -j5'
-alias rvct='source ~/ho_config/work/ExCompany/rvct41.sh'
+alias rvct='source $excompany_script_path/rvct41.sh'
 alias sr='source ./build/envsetup.sh'
 
 # For The AnyDATA Project

@@ -2,9 +2,9 @@
 
 # =============================================================================
 
-# */2 * * * * /ssd2/home/hokim/ho_config/work/kaon/bkos200/bkos200_auto_dailybuild.sh
-# * 4 * * * /ssd2/home/hokim/ho_config/work/kaon/bkos200/bkos200_auto_dailybuild.sh
-#* 5 * * * /ssd2/home/hokim/ho_config/work/kaon/bkos200/bkos200_auto_dailybuild.sh
+# */2 * * * * $bkos200_script_path/bkos200_auto_dailybuild.sh
+# * 4 * * * $bkos200_script_path/bkos200_auto_dailybuild.sh
+#* 5 * * * $bkos200_script_path/bkos200_auto_dailybuild.sh
 
 # =============================================================================
 
@@ -22,7 +22,7 @@ logfile_path=`pwd`/build_log
 #source /ssd2/home/hokim/.bashrc
 
 PATH=/ssd2/home/hokim/bin:$PATH
-cd /ssd2/home/hokim/00_Archive/XX_daily_build
+cd /ssd2/home/hokim/archive/XX_daily_build
 
 # =============================================================================
 # HO_DISPLAY_COPYRIGHT_
