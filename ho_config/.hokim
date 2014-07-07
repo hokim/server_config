@@ -11,7 +11,8 @@ export ho_script_path=~/ho_config
 PATH=$ho_script_path:~/bin:$PATH
 
 # alias definition
-# alias ls='ls --color=auto'
+alias ll='ls -alF'
+alias ls='ls --color=auto'
 alias dir='dir -laF --color=auto'
 alias vdir='vdir --color=auto'
 
