@@ -10,5 +10,3 @@ PATH=$kaon_script_path:$PATH
 # BKO-S200
 source $kaon_script_path/bkos200/.bkos200
 
-work-project
-

@@ -3,7 +3,8 @@
 # for examples
 
 # Ho Kim
-HISTSIZE=500
+HISTSIZE=1000
+HISTFILESIZE=2000
 
 export ho_script_path=~/ho_config
 # PATH=~/bin:$PATH
