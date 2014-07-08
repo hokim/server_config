@@ -9,6 +9,11 @@ PATH=$work_script_path:$PATH
 # Common
 source $work_script_path/git-completion.bash
 
+# Work Alias
+alias w-project='cd ~/archive/project'
+alias w-bkos200='cd ~/archive/project/bkos200'
+alias w-hokim='cd ~/archive/project/hokim'
+
 # Git Alias
 alias g-br="git branch -a -v"
 alias g-l="git log -3 HEAD"

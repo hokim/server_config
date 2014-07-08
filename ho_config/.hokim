@@ -15,12 +15,7 @@ alias ll='ls -alF'
 alias ls='ls --color=auto'
 alias dir='dir -laF --color=auto'
 alias vdir='vdir --color=auto'
-
 alias rm='rm -rf'
-alias work-project='cd ~/archive/Project'
-alias work-git='cd ~/archive/00_git_server'
-alias ho-conf='cd ~/$ho_script_path'
-alias ho='. $bkos200_script_path/bkos200.sh'
 
 #PS1="[\u:\w\a]\\$ "
 #export PS1='\[\033]0;\w\007
@@ -32,6 +27,10 @@ export PS1='\[\033]0;\W\007
 $ '
 
 # Ho Kim's alias
+alias cls='clear'
+alias ho-conf='cd ~/$ho_script_path'
+alias ho-clone='git clone git@github.com:hokim/server_config.git'
+
 alias touch-all='find . -name "*.c" -exec touch {} \;'
 alias touch-file='touch *.c'
 alias oktar='tar cvzfp'
@@ -41,7 +40,7 @@ alias suntar='sudo tar xvzfp'
 alias ok7z='7zr a -r'
 alias un7z='7zr x'
 alias ..='cd ..'
-alias ....='cd ../..'
+alias ...='cd ../..'
 alias ~='cd ~'
 alias c-clear='crontab -r'
 alias c-edit='crontab -e'
@@ -62,7 +61,6 @@ alias screen-l='screen -ls'
 alias screen-r='screen -r'
 alias screen-s='screen -S'
 
-alias ho-clone='git clone git@github.com:hokim/server_config.git'
 
 # ---------
 #alias ssh_sw4_3='ssh hokim@10.10.10.13'

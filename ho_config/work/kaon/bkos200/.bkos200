@@ -24,3 +24,5 @@ alias b-gc-sdkmv='git clone ssh://kaon@112.216.25.58:10002/git/kaon/marvell/sdk-
 alias b-env='. build/envsetup.sh; lunch 12'
 alias b-ad='source $bkos200_script_path/bkos200_auto_dailybuild.sh'
 alias b-ad2='source $bkos200_script_path/bkos200.sh'
+
+alias ho='. $bkos200_script_path/bkos200.sh'
