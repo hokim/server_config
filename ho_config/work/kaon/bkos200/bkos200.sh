@@ -55,6 +55,7 @@ HO_SELECT_BUILD_OPERATOR_() {
 	echo "  -----------------------------------------  "
 	echo "  nonotp         : nonOTP                    "
 	echo "  full_mp        : Mass Production           "
+	echo "  full_otap      : OTA Package               "
 	echo "============================================="
 	echo "      repo init/sync/clean/fetch/branch      "
 	echo "============================================="
@@ -689,9 +690,9 @@ do
 		# --------------------------------------------
 		"nonotp" | "NONOTP")
 		# --------------------------------------------
-			HO_REPO_INIT_
-			HO_REPO_SYNC_
-			HO_REPO_BRANCH_
+			#HO_REPO_INIT_
+			#HO_REPO_SYNC_
+			#HO_REPO_BRANCH_
 
 			# nonOTP - Need to check
 			#HO_CHANGE_BKOS200_CONFIG_NONOTP_
@@ -705,9 +706,9 @@ do
 		# --------------------------------------------
 		"full_mp" | "FULL_MP")
 		# --------------------------------------------
-			HO_REPO_INIT_
-			HO_REPO_SYNC_
-			HO_REPO_BRANCH_
+			#HO_REPO_INIT_
+			#HO_REPO_SYNC_
+			#HO_REPO_BRANCH_
 
 			# MP
 			HO_CHANGE_BKOS200_CONFIG_MP_
@@ -715,6 +716,22 @@ do
 			HO_BUILD_ENV_INIT_
 			HO_BUILD_ALL_
 			HO_BUILD_MP_
+			HO_MOVE_UPDATE_ZIP_
+
+			return
+			;;
+		# --------------------------------------------
+		"full_otap" | "FULL_OTAP")
+		# --------------------------------------------
+			#HO_REPO_INIT_
+			#HO_REPO_SYNC_
+			#HO_REPO_BRANCH_
+
+			# MP
+			HO_CHANGE_BKOS200_CONFIG_OTA_PACKAGE_
+
+			HO_BUILD_ENV_INIT_
+			HO_BUILD_ALL_
 			HO_MOVE_UPDATE_ZIP_
 
 			return
