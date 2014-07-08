@@ -26,3 +26,4 @@ alias b-ad='source $bkos200_script_path/bkos200_auto_dailybuild.sh'
 alias b-ad2='source $bkos200_script_path/bkos200.sh'
 
 alias ho='. $bkos200_script_path/bkos200.sh'
+alias b-git='cd ~/archive/project/bkos200/git-server'
