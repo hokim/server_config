@@ -9,6 +9,7 @@
 	chlist = "!f() { git log --name-status --pretty=oneline $1..$2; }; f"
 	ckunpush = log --branches --not --remotes
 	cnt = shortlog -sn
+	co = checkout
 	cs = commit -s
 	empty-ci = commit --allow-empty
 	#gpush = "!f() { git push $1 HEAD:refs/for/$2; }; f"
