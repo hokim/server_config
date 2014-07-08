@@ -83,9 +83,9 @@ HO_CHANGE_BKOS200_CONFIG_MP_() {
 }
 
 # =============================================================================
-# HO_CHANGE_BKOS200_CONFIG_OTA_
+# HO_CHANGE_BKOS200_CONFIG_OTA_PACKAGE_
 # -----------------------------------------------------------------------------
-HO_CHANGE_BKOS200_CONFIG_OTA_() {
+HO_CHANGE_BKOS200_CONFIG_OTA_PACKAGE_() {
 
 	sed -i 's/^#PRODUCT_DEFAULT_DEV_CERTIFICATE/PRODUCT_DEFAULT_DEV_CERTIFICATE/g' $temp_config_file
 	sed -i 's/^KAON_MV88DE3100_SDK := bg2ct.bkos200.emmc.gtvv4.cfg/KAON_MV88DE3100_SDK := bg2ct.bkos200_ota.emmc.gtvv4.cfg/g' $temp_config_file
@@ -463,7 +463,7 @@ else
 		echo 
 		echo "  nonotp      NonOTP Image Full Build(Auto Repo Init,Sync)"
 		echo "  mp          Mass Production Image Full Build(Auto Repo Init,Sync)"
-		echo "  ota         OTP Image Full Build(Auto Repo Init,Sync)"
+		echo "  otap        OTA Package Image Full Build(Auto Repo Init,Sync)"
 		echo "  repo        Auto Repo Init & Sync"
 		echo 
 		return
@@ -503,14 +503,14 @@ else
 		return
 	fi
 
-	if [ $1 == 'ota' ]; then
+	if [ $1 == 'otap' ]; then
 		HO_WORKING_DIR_INIT_ $1
 		HO_REPO_INIT_
 		HO_REPO_SYNC_
 		HO_REPO_BRANCH_
 
-		# OTA
-		HO_CHANGE_BKOS200_CONFIG_OTA_
+		# OTA PACKAGE
+		HO_CHANGE_BKOS200_CONFIG_OTA_PACKAGE_
 
 		HO_BUILD_ENV_INIT_
 		HO_BUILD_ALL_
