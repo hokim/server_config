@@ -2,9 +2,15 @@
 
 # =============================================================================
 
+temp_daily_build_working_path=/ssd2/home/hokim/archive/project/bkos200/daily-build
+
 # */2 * * * * $bkos200_script_path/bkos200_auto_dailybuild.sh
 # * 4 * * * $bkos200_script_path/bkos200_auto_dailybuild.sh
 #* 5 * * * $bkos200_script_path/bkos200_auto_dailybuild.sh
+
+#source /ssd2/home/hokim/.bashrc
+PATH=/opt/repo:$PATH
+cd $temp_daily_build_working_path
 
 # =============================================================================
 
@@ -16,13 +22,6 @@ temp_default_manifest=ssh://ottsrc.kaon:29418/marvell/manifest-combi-bkos200
 temp_config_file=./vendor/kaon/BKO-S200/bkos200.mk
 temp_make_update_path=./usb_bko-s200
 logfile_path=`pwd`/build_log
-
-# =============================================================================
-
-#source /ssd2/home/hokim/.bashrc
-
-PATH=/ssd2/home/hokim/bin:$PATH
-cd /ssd2/home/hokim/archive/XX_daily_build
 
 # =============================================================================
 # HO_DISPLAY_COPYRIGHT_
@@ -65,6 +64,7 @@ HO_SELECT_BUILD_OPERATOR_() {
 	echo "  -----------------------------------------  "
 	echo "  nonotp         : nonOTP                    "
 	echo "  full_mp        : Mass Production           "
+	echo "  full_otap      : OTA Package               "
 	echo "============================================="
 	echo "      repo init/sync/clean/fetch/branch      "
 	echo "============================================="
@@ -93,9 +93,9 @@ HO_CHANGE_BKOS200_CONFIG_MP_() {
 }
 
 # =============================================================================
-# HO_CHANGE_BKOS200_CONFIG_OTA_
+# HO_CHANGE_BKOS200_CONFIG_OTA_PACKAGE_
 # -----------------------------------------------------------------------------
-HO_CHANGE_BKOS200_CONFIG_OTA_() {
+HO_CHANGE_BKOS200_CONFIG_OTA_PACKAGE_() {
 
 	sed -i 's/^#PRODUCT_DEFAULT_DEV_CERTIFICATE/PRODUCT_DEFAULT_DEV_CERTIFICATE/g' $temp_config_file
 	sed -i 's/^KAON_MV88DE3100_SDK := bg2ct.bkos200.emmc.gtvv4.cfg/KAON_MV88DE3100_SDK := bg2ct.bkos200_ota.emmc.gtvv4.cfg/g' $temp_config_file
@@ -425,6 +425,16 @@ HO_BUILD_ALL_() {
 HO_REPO_BRANCH_() {
 
 	echo HO_REPO_BRANCH_ ........
+	# TVStorm repository #
+	tmp_repo_start_master_googletv='repo start master kaon/googletv/v4-rc-81358'
+	tmp_repo_start_master_bkos200='repo start master kaon/bkos200'
+	tmp_repo_start_master_sdk='repo start master kaon/marvell/sdk-marvell'
+	tmp_repo_start_master_prebuilts='repo start master tvstorm/prebuilts'
+	# Kaon repository #
+	tmp_repo_start_master_mv88de3100_sdk='repo start mrvl/bg2ct/OTA01 marvell/mv88de3100_sdk'
+	tmp_repo_start_master_ampsdk='repo start mrvl/bg2ct/OTA01 marvell/ampsdk'
+	tmp_repo_start_master_linux='repo start mrvl/bg2ct/OTA01 marvell/linux'
+
 	# --------------------------------------------
 	logfile_name=$(HO_BUILD_LOG_INIT_ 'repo_branch')
 	# --------------------------------------------
@@ -432,23 +442,23 @@ HO_REPO_BRANCH_() {
 	# --------------------------------------------
 	echo "TVStorm repository ***********************" 2>&1 | tee -a $logfile_name
 	# --------------------------------------------
-	echo "repo start master kaon/googletv/v4-rc-81358" 2>&1 | tee -a $logfile_name
-	repo start master kaon/googletv/v4-rc-81358 2>&1 | tee -a $logfile_name
-	echo "repo start master kaon/bkos200" 2>&1 | tee -a $logfile_name
-	repo start master kaon/bkos200 2>&1 | tee -a $logfile_name
-	echo "repo start master kaon/marvell/sdk-marvell" 2>&1 | tee -a $logfile_name
-	repo start master kaon/marvell/sdk-marvell 2>&1 | tee -a $logfile_name
-	echo "repo start master tvstorm/prebuilts" 2>&1 | tee -a $logfile_name
-	repo start master tvstorm/prebuilts 2>&1 | tee -a $logfile_name
+	echo "$tmp_repo_start_master_googletv" 2>&1 | tee -a $logfile_name
+	$tmp_repo_start_master_googletv 2>&1 | tee -a $logfile_name
+	echo "$tmp_repo_start_master_bkos200" 2>&1 | tee -a $logfile_name
+	$tmp_repo_start_master_bkos200 2>&1 | tee -a $logfile_name
+	echo "$tmp_repo_start_master_sdk" 2>&1 | tee -a $logfile_name
+	$tmp_repo_start_master_sdk 2>&1 | tee -a $logfile_name
+	echo "$tmp_repo_start_master_prebuilts" 2>&1 | tee -a $logfile_name
+	$tmp_repo_start_master_prebuilts 2>&1 | tee -a $logfile_name
 	# --------------------------------------------
 	echo "Kaon repository ***********************" 2>&1 | tee -a $logfile_name
 	# --------------------------------------------
-	echo "repo start mrvl/bg2ct/OTA01 marvell/mv88de3100_sdk" 2>&1 | tee -a $logfile_name
-	repo start mrvl/bg2ct/OTA01 marvell/mv88de3100_sdk 2>&1 | tee -a $logfile_name
-	echo "repo start mrvl/bg2ct/OTA01 marvell/ampsdk" 2>&1 | tee -a $logfile_name
-	repo start mrvl/bg2ct/OTA01 marvell/ampsdk 2>&1 | tee -a $logfile_name
-	echo "repo start mrvl/bg2ct/OTA01 marvell/linux" 2>&1 | tee -a $logfile_name
-	repo start mrvl/bg2ct/OTA01 marvell/linux 2>&1 | tee -a $logfile_name
+	echo "$tmp_repo_start_master_mv88de3100_sdk" 2>&1 | tee -a $logfile_name
+	$tmp_repo_start_master_mv88de3100_sdk 2>&1 | tee -a $logfile_name
+	echo "$tmp_repo_start_master_ampsdk" 2>&1 | tee -a $logfile_name
+	$tmp_repo_start_master_ampsdk 2>&1 | tee -a $logfile_name
+	echo "$tmp_repo_start_master_linux" 2>&1 | tee -a $logfile_name
+	$tmp_repo_start_master_linux 2>&1 | tee -a $logfile_name
 	echo Branch Set Completed ........ 2>&1 | tee -a $logfile_name
 	# --------------------------------------------
 	return
@@ -464,8 +474,8 @@ HO_REPO_INIT_
 HO_REPO_SYNC_
 HO_REPO_BRANCH_
 
-# OTA
-HO_CHANGE_BKOS200_CONFIG_OTA_
+# OTA PACKAGE
+HO_CHANGE_BKOS200_CONFIG_OTA_PACKAGE_
 
 HO_BUILD_ENV_INIT_
 HO_BUILD_ALL_

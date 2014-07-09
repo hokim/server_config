@@ -32,6 +32,7 @@ alias g-st="git status -sb"
 alias g-tree="git log --graph --decorate --pretty=oneline --abbrev-commit --all"
 
 alias lf='g-lf'
+alias br='g-br'
 
 # KAON
 source $work_script_path/kaon/.kaon
