@@ -379,14 +379,12 @@ HO_REPO_CLEAN_() {
 
 	echo clean ........
 	# --------------------------------------------
-	#logfile_name=$(HO_BUILD_LOG_INIT_ 'repo_clean')
-	# --------------------------------------------
-	echo Repo Clean Started $(date) ........ #| tee -a $logfile_name
-	repo forall -c git clean -d -f # 2>&1 | tee -a $logfile_name
-	repo forall -c git reset --hard HEAD # 2>&1 | tee -a $logfile_name
-	repo forall -c git checkout m/master # 2>&1 | tee -a $logfile_name
-	repo sync # 2>&1 | tee -a $logfile_name
-	echo Repo Clean Completed $(date) ........ # | tee -a $logfile_name
+	echo Repo Clean Started $(date) ........
+	repo forall -c git clean -d -f
+	repo forall -c git reset --hard HEAD
+	repo forall -c git checkout m/master
+	repo sync
+	echo Repo Clean Completed $(date) ........
 	# --------------------------------------------
 	return
 
@@ -419,15 +417,6 @@ HO_REPO_BRANCH_() {
 	temp_branch_name=$temp_current_project_name'_'$temp_current_time'_'`whoami`
 
 	echo HO_REPO_BRANCH_ ........
-	# TVStorm repository #
-	#tmp_repo_start_master_googletv='repo start master kaon/googletv/v4-rc-81358'
-	#tmp_repo_start_master_bkos200='repo start master kaon/bkos200'
-	#tmp_repo_start_master_sdk='repo start master kaon/marvell/sdk-marvell'
-	#tmp_repo_start_master_prebuilts='repo start master tvstorm/prebuilts'
-	# Kaon repository #
-	#tmp_repo_start_master_mv88de3100_sdk='repo start mrvl/bg2ct/OTA01 marvell/mv88de3100_sdk'
-	#tmp_repo_start_master_ampsdk='repo start mrvl/bg2ct/OTA01 marvell/ampsdk'
-	#tmp_repo_start_master_linux='repo start mrvl/bg2ct/OTA01 marvell/linux'
 
 	tmp_repo_start_all="repo start $temp_branch_name --all"
 
@@ -436,27 +425,6 @@ HO_REPO_BRANCH_() {
 	# --------------------------------------------
 	echo Branch Set Start ........ 2>&1 | tee -a $logfile_name
 	# --------------------------------------------
-	#echo "TVStorm repository ***********************" 2>&1 | tee -a $logfile_name
-	# --------------------------------------------
-	#echo "$tmp_repo_start_master_googletv" 2>&1 | tee -a $logfile_name
-	#$tmp_repo_start_master_googletv 2>&1 | tee -a $logfile_name
-	#echo "$tmp_repo_start_master_bkos200" 2>&1 | tee -a $logfile_name
-	#$tmp_repo_start_master_bkos200 2>&1 | tee -a $logfile_name
-	#echo "$tmp_repo_start_master_sdk" 2>&1 | tee -a $logfile_name
-	#$tmp_repo_start_master_sdk 2>&1 | tee -a $logfile_name
-	#echo "$tmp_repo_start_master_prebuilts" 2>&1 | tee -a $logfile_name
-	#$tmp_repo_start_master_prebuilts 2>&1 | tee -a $logfile_name
-	# --------------------------------------------
-	#echo "Kaon repository ***********************" 2>&1 | tee -a $logfile_name
-	# --------------------------------------------
-	#echo "$tmp_repo_start_master_mv88de3100_sdk" 2>&1 | tee -a $logfile_name
-	#$tmp_repo_start_master_mv88de3100_sdk 2>&1 | tee -a $logfile_name
-	#echo "$tmp_repo_start_master_ampsdk" 2>&1 | tee -a $logfile_name
-	#$tmp_repo_start_master_ampsdk 2>&1 | tee -a $logfile_name
-	#echo "$tmp_repo_start_master_linux" 2>&1 | tee -a $logfile_name
-	#$tmp_repo_start_master_linux 2>&1 | tee -a $logfile_name
-
-
 	echo "$tmp_repo_start_all" 2>&1 | tee -a $logfile_name
 	$tmp_repo_start_all 2>&1 | tee -a $logfile_name
 	# --------------------------------------------
