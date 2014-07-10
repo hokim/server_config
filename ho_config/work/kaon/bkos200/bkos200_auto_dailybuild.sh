@@ -184,11 +184,16 @@ HO_MOVE_UPDATE_ZIP_() {
 	mkdir $temp_make_update_path
 	if [ -f ./out/target/product/BKO-S200/system/usr/skb/version.txt ]; then
 		cp ./out/target/product/BKO-S200/system/usr/skb/version.txt $temp_make_update_path/
+	else
+		exit
 	fi
 	if [ -f ./out/target/product/BKO-S200/bkos200-*.* ]; then
 		cp ./out/target/product/BKO-S200/bkos200-*.* $temp_make_update_path/
 		mv $temp_make_update_path/bkos200-*.* $temp_make_update_path/update.zip
+	else
+		exit
 	fi
+	zip -j usb_bko-s200.zip $temp_make_update_path/update.zip $temp_make_update_path/version.txt
 	# --------------------------------------------
 	return
 
@@ -489,6 +494,7 @@ HO_BUILD_ALL_
 HO_MOVE_UPDATE_ZIP_
 
 # =============================================================================
+
 echo " "
 echo "The End."
 cd $temp_current_directory
