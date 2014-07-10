@@ -21,9 +21,11 @@ source ~/ho_config/work/.work
 
 cd /ssd2/home/hokim/archive/project/bkos200/daily-build
 
-echo `date +%Y%m%d_%H%M%S` >> build.log
+echo Start... `date +%Y%m%d_%H%M%S` >> daily_build_stamp.log
 
 source $bkos200_script_path/bkos200_auto_dailybuild.sh
+
+echo Completed... `date +%Y%m%d_%H%M%S` >> daily_build_stamp.log
 
 # =============================================================================
 # The End
