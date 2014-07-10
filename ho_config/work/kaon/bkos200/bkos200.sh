@@ -15,6 +15,26 @@ temp_make_update_path=./usb_bko-s200
 logfile_path=`pwd`/build_log
 
 # =============================================================================
+# HO_FIND_STRING_IN_THE_FILES_
+# -----------------------------------------------------------------------------
+# filename string1
+HO_FIND_STRING_IN_THE_FILES_() {
+
+	if [ ! -f $1 ]; then
+		return 0
+	fi
+
+	#grep -q "$2" $1 && echo $?
+	if grep -qs "$2" $1
+	then
+		return 1
+	fi
+
+	return 0
+
+}
+
+# =============================================================================
 # HO_DISPLAY_COPYRIGHT_
 # -----------------------------------------------------------------------------
 HO_DISPLAY_COPYRIGHT_() {
@@ -351,6 +371,14 @@ HO_REPO_INIT_() {
 	repo init -u $temp_default_manifest 2>&1 | tee -a $logfile_name
 	echo Repo Init Completed $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
+	# Check the remote hung up
+	HO_FIND_STRING_IN_THE_FILES_ $logfile_name "fatal"
+	temp_return_value=$?
+	echo "Repo Init Error <$temp_return_value> ........" | tee -a $logfile_name
+	if [ $temp_return_value == "1" ]; then
+		exit
+	fi
+	# --------------------------------------------
 	return
 
 }
@@ -367,6 +395,14 @@ HO_REPO_SYNC_() {
 	echo Repo Sync Started $(date) ........ | tee -a $logfile_name
 	repo sync 2>&1 | tee -a $logfile_name
 	echo Repo Sync Completed $(date) ........ | tee -a $logfile_name
+	# --------------------------------------------
+	# Check the remote hung up
+	HO_FIND_STRING_IN_THE_FILES_ $logfile_name "fatal"
+	temp_return_value=$?
+	echo "Repo Sync Error <$temp_return_value> ........" | tee -a $logfile_name
+	if [ $temp_return_value == "1" ]; then
+		exit
+	fi
 	# --------------------------------------------
 	return
 

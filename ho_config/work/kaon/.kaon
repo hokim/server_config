@@ -6,6 +6,8 @@ export kaon_script_path=~/ho_config/work/kaon
 PATH=$kaon_script_path:$PATH
 
 # KAON #
+alias kaon-script='cd $kaon_script_path'
+
 # For The KAON Project
 # BKO-S200
 source $kaon_script_path/bkos200/.bkos200

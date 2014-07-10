@@ -28,7 +28,7 @@ $ '
 
 # Ho Kim's alias
 alias cls='clear'
-alias ho-conf='cd $ho_script_path'
+alias ho-config='cd $ho_script_path'
 alias ho-clone='git clone git@github.com:hokim/server_config.git'
 
 alias touch-all='find . -name "*.c" -exec touch {} \;'
@@ -46,6 +46,7 @@ alias ~='cd ~'
 alias c-clear='crontab -r'
 alias c-edit='crontab -e'
 alias c-list='crontab -l'
+alias c-restart='/etc/init.d/cron restart'
 alias s-pt='export tmp_save_path=$PWD'
 alias r-pt='cd $tmp_save_path'
 alias s-p='echo $PWD > $ho_script_path/save_path'
@@ -61,7 +62,7 @@ alias r-p3='cd $(cat $ho_script_path/save_path3)'
 alias screen-l='screen -ls'
 alias screen-r='screen -r'
 alias screen-s='screen -S'
-
+alias ps-grep='ps -ef | grep'
 
 # ---------
 #alias ssh_sw4_3='ssh hokim@10.10.10.13'

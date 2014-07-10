@@ -11,6 +11,7 @@ PATH=$bkos200_script_path:/opt/repo:$PATH
 # For The KAON Project
 
 #BKO-S200
+alias bkos200-script='cd $bkos200_script_path'
 alias b-ra='repo init -u ssh://ottsrc.kaon:29418/marvell/manifest-combi-bkos200; repo sync'
 alias b-ri='repo init -u ssh://ottsrc.kaon:29418/marvell/manifest-combi-bkos200'
 alias b-rs='repo sync'
@@ -29,3 +30,7 @@ alias b-ad2='source $bkos200_script_path/bkos200.sh'
 
 alias ho='. $bkos200_script_path/bkos200.sh'
 alias b-git='cd ~/archive/project/bkos200/git-server'
+
+#JAVA
+#export JAVA_HOME=~/tools/java-6-oracle
+#export PATH=$JAVA_HOME/bin:$PATH

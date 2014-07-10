@@ -2,15 +2,8 @@
 
 # =============================================================================
 
-temp_daily_build_working_path=/ssd2/home/hokim/archive/project/bkos200/daily-build
-
-# */2 * * * * $bkos200_script_path/bkos200_auto_dailybuild.sh
-# * 4 * * * $bkos200_script_path/bkos200_auto_dailybuild.sh
-#0 5 * * * $bkos200_script_path/bkos200_auto_dailybuild.sh
-
-#source /ssd2/home/hokim/.bashrc
-PATH=/opt/repo:$PATH
-cd $temp_daily_build_working_path
+export JAVA_HOME=/usr/lib/jvm/java-6-oracle
+$ echo $JAVA_HOME
 
 # =============================================================================
 
@@ -22,6 +15,26 @@ temp_default_manifest=ssh://ottsrc.kaon:29418/marvell/manifest-combi-bkos200
 temp_config_file=./vendor/kaon/BKO-S200/bkos200.mk
 temp_make_update_path=./usb_bko-s200
 logfile_path=`pwd`/build_log
+
+# =============================================================================
+# HO_FIND_STRING_IN_THE_FILES_
+# -----------------------------------------------------------------------------
+# filename string1
+HO_FIND_STRING_IN_THE_FILES_() {
+
+	if [ ! -f $1 ]; then
+		return 0
+	fi
+
+	#grep -q "$2" $1 && echo $?
+	if grep -qs "$2" $1
+	then
+		return 1
+	fi
+
+	return 0
+
+}
 
 # =============================================================================
 # HO_DISPLAY_COPYRIGHT_
@@ -360,6 +373,14 @@ HO_REPO_INIT_() {
 	repo init -u $temp_default_manifest 2>&1 | tee -a $logfile_name
 	echo Repo Init Completed $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
+	# Check the remote hung up
+	HO_FIND_STRING_IN_THE_FILES_ $logfile_name "fatal"
+	temp_return_value=$?
+	echo "Repo Init Error <$temp_return_value> ........" | tee -a $logfile_name
+	if [ $temp_return_value == "1" ]; then
+		exit
+	fi
+	# --------------------------------------------
 	return
 
 }
@@ -376,6 +397,14 @@ HO_REPO_SYNC_() {
 	echo Repo Sync Started $(date) ........ | tee -a $logfile_name
 	repo sync 2>&1 | tee -a $logfile_name
 	echo Repo Sync Completed $(date) ........ | tee -a $logfile_name
+	# --------------------------------------------
+	# Check the remote hung up
+	HO_FIND_STRING_IN_THE_FILES_ $logfile_name "fatal"
+	temp_return_value=$?
+	echo "Repo Sync Error <$temp_return_value> ........" | tee -a $logfile_name
+	if [ $temp_return_value == "1" ]; then
+		exit
+	fi
 	# --------------------------------------------
 	return
 
