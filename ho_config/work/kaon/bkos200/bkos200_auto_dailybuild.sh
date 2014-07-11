@@ -1,9 +1,11 @@
-#!/bin/sh
+#!/bin/bash
 
 # =============================================================================
 
+#USER=`whoami`
+#export USER
 export JAVA_HOME=/usr/lib/jvm/java-6-oracle
-$ echo $JAVA_HOME
+#$ echo $JAVA_HOME
 
 # =============================================================================
 
