@@ -18,12 +18,7 @@ temp_daily_build_current_path=`pwd`
 
 # =============================================================================
 
-#0 7 * * 1-5 /ssd2/home/hokim/ho_config/work/kaon/bkos200/bkos200_auto_dailybuild.sh
-# */2 * * * * /ssd2/home/hokim/ho_config/daily-build.sh
-# * 4 * * * /ssd2/home/hokim/ho_config/daily-build.sh
-#0 5 * * * /ssd2/home/hokim/ho_config/daily-build.sh
-
-#58 8 * * 1-5 ~/ho_config/daily_build.sh
+#0 7 * * 1-5 bash ~/ho_config/work/kaon/bkos200/daily-build.sh 
 
 # =============================================================================
 
