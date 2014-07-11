@@ -9,7 +9,7 @@ export JAVA_ROOT=$JAVA_HOME
 export JAVA_BIN=$JAVA_HOME/bin
 export JDK_HOME=$JAVA_HOME
 export JRE_HOME=$JAVA_HOME
-export PATH=$PATH:$JAVA_BIN
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/repo:$JAVA_BIN
 
 temp_daily_build_current_path=`pwd`
 
