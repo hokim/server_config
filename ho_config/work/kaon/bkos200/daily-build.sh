@@ -2,17 +2,17 @@
 
 # =============================================================================
 
-USER=`whoami`
-export USER
-SHELL=/bin/bash
-export SHELL
-source $HOME/.profile
+export USER=`whoami`
+export SHELL=/bin/bash
+export JAVA_HOME=/usr/lib/jvm/java-6-oracle
+export JAVA_ROOT=$JAVA_HOME
+export JAVA_BIN=$JAVA_HOME/bin
+export JDK_HOME=$JAVA_HOME
+export JRE_HOME=$JAVA_HOME
+export PATH=$PATH:$JAVA_BIN
 
-# Ho Kim's Configurations
-source ~/ho_config/.hokim
-
-# Work Configurations
-source ~/ho_config/work/.work
+# Profile
+source ~/.bashrc
 
 temp_daily_build_current_path=`pwd`
 
@@ -24,7 +24,7 @@ temp_daily_build_current_path=`pwd`
 
 temp_daily_build_hash=`date +%Y%m%d_%H%M%S`
 
-cd /ssd2/home/hokim/archive/project/bkos200/daily-build
+cd /ssd2/home/$USER/archive/project/bkos200/daily-build
 
 echo "Start... [$temp_daily_build_hash]  `date +%Y%m%d_%H%M%S`" >> daily_build_stamp.log
 
