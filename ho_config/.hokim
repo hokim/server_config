@@ -6,9 +6,9 @@
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-export ho_script_path=~/ho_config:~/ho_config/bin
+export ho_script_path=~/ho_config
 # PATH=~/bin:$PATH
-PATH=$ho_script_path:~/bin:$PATH
+PATH=~/bin:$ho_script_path:~/ho_config/bin:$PATH
 
 # alias definition
 alias ll='ls -alF'
