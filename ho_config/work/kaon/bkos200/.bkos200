@@ -25,8 +25,8 @@ alias b-c-tvstorm='git clone ssh://kaon@112.216.25.58:10002/git/tvstorm/prebuilt
 alias b-c-googletv='git clone ssh://kaon@112.216.25.58:10002/git/kaon/googletv/v4-rc-81358'
 
 alias b-env='. build/envsetup.sh; lunch 12'
-alias b-ad='source $bkos200_script_path/bkos200_auto_dailybuild.sh'
-alias b-ad2='source $bkos200_script_path/bkos200.sh'
+#alias b-ad='source $bkos200_script_path/bkos200_auto_dailybuild.sh'
+#alias b-ad2='source $bkos200_script_path/bkos200.sh'
 
 alias ho='. $bkos200_script_path/bkos200.sh'
 alias b-git='cd ~/archive/project/bkos200/git-server'
