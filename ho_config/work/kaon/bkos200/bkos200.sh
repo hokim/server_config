@@ -286,10 +286,16 @@ HO_BUILD_SDK_() {
 	# --------------------------------------------
 	logfile_name=$(HO_BUILD_LOG_INIT_ 'build_mv88de3100_sdk')
 	# --------------------------------------------
+	if [ -f ./vendor/marvell-sdk/MV88DE3100_SDK/MV88DE3100_Tools/bsp/bootloader/out/bg2ct_rdkdmp/bootloader.elf ]; then
+		rm -f ./vendor/marvell-sdk/MV88DE3100_SDK/MV88DE3100_Tools/bsp/bootloader/out/bg2ct_rdkdmp/bootloader.elf
+	fi
 	echo MV88DE3100 SDK Compile Started at $(date) ........ | tee -a $logfile_name
 	make mv88de3100_sdk 2>&1 | tee -a $logfile_name
 	echo MV88DE3100 SDK Compile Completed at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
+	if [ ! -f ./vendor/marvell-sdk/MV88DE3100_SDK/MV88DE3100_Tools/bsp/bootloader/out/bg2ct_rdkdmp/bootloader.elf ]; then
+		exit
+	fi
 	return
 
 }
@@ -303,10 +309,16 @@ HO_BUILD_GOOGLETV_() {
 	# --------------------------------------------
 	logfile_name=$(HO_BUILD_LOG_INIT_ 'build_googletv')
 	# --------------------------------------------
+	if [ -f ./out/target/product/BKO-S200/system.img  ]; then
+		rm -f ./out/target/product/BKO-S200/system.img
+	fi
 	echo GoogleTV Compile Started $(date) ........ | tee -a $logfile_name
 	make -j8 2>&1 | tee -a $logfile_name
 	echo GoogleTV Compile Completed $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
+	if [ ! -f ./out/target/product/BKO-S200/system.img  ]; then
+		exit
+	fi
 	return
 
 }
