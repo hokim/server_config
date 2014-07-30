@@ -30,6 +30,7 @@ $ '
 alias cls='clear'
 alias hoho='source ~/ho_config/.hokim'
 alias ho-config='cd $ho_script_path'
+alias ho-grep="grep -rni"
 alias ho-pgrep-u="pgrep -l -u"
 alias ho-pkill-user="pkill -U"
 alias ho-ps-grep='ps -ef | grep'
