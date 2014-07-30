@@ -20,6 +20,7 @@ set autoindent
 "set nowrap
 set ff=unix
 set ruler
+set nobackup
 set number
 set modifiable
 set hlsearch
@@ -33,7 +34,6 @@ set formatoptions+=ro
 set incsearch
 set ignorecase
 set printoptions=portrait:n,wrap:n,duplex:off
-
 
 "========= vundle setting =========
 set nocompatible               " be iMproved
