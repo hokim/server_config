@@ -18,6 +18,7 @@ alias w-hokim='cd ~/archive/project/hokim'
 # Git Alias
 alias g-br="git branch -a -v"
 alias g-l="git log -3 HEAD"
+#alias g-l="git l"
 alias g-l1d="git log --since=\"1 day ago\""
 alias g-l1w="git log --since=\"1 week ago\""
 alias g-l2d="git log --since=\"2 days ago\""
