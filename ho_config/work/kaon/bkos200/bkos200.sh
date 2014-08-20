@@ -2,10 +2,10 @@
 
 # =============================================================================
 
+HO_CURRENT_PLATFORM_NAME=bkos200
 
 # =============================================================================
 
-temp_current_project_name=bkos200
 temp_current_time=`date +%Y%m%d_%H%M%S`
 temp_current_directory=`pwd`
 temp_current_path=$PATH
@@ -41,11 +41,11 @@ HO_DISPLAY_COPYRIGHT_() {
 
 	clear
 	echo "--------------------------"
-	echo "- BKO-S200 Build Script  -"
-	echo "- Version: 1.0           -"
-	echo "-                        -"
-	echo "- by hokim@kaonmedia.com -"
-	echo "- www.kaonmedia.com      -" 
+	echo " $HO_CURRENT_PLATFORM_NAME"
+	echo " Version: 1.0           "
+	echo "                        "
+	echo " by hokim@kaonmedia.com "
+	echo " www.kaonmedia.com      " 
 	echo "--------------------------"
 	echo " "
 	sleep 1
@@ -76,13 +76,17 @@ HO_SELECT_BUILD_OPERATOR_() {
 	echo "  nonotp         : nonOTP                    "
 	echo "  full_mp        : Mass Production           "
 	echo "  full_otap      : OTA Package               "
+	echo "  clean_gtv      :                           "
+	echo "  clean_linux    :                           "
+	echo "  clean_sdk      :                           "
+	echo "  clean_all      :                           "
 	echo "============================================="
-	echo "      repo init/sync/clean/fetch/branch      "
+	echo "      repo init/sync/fetch/branch            "
 	echo "============================================="
 	echo "  51 or init     : repo init                 "
 	echo "  52 or sync     : repo sync                 "
 	echo "  53             : repo init & sync          "
-	echo "  54 or clean    : clean                     "
+	echo "  54             : repo clean                "
 	echo "  b ro branch    : branch                    "
 	echo "============================================="
 	echo "  x: Exit                                    "
@@ -134,7 +138,7 @@ HO_WORKING_DIR_INIT_() {
 
 	# --------------------------------------------
 	temp_current_time=`date +%Y%m%d_%H%M%S`
-	temp_working_folder=$temp_current_project_name'_'$temp_current_time'_'`whoami`'_'$1
+	temp_working_folder=$HO_CURRENT_PLATFORM_NAME'_'$temp_current_time'_'`whoami`'_'$1
 	mkdir $temp_working_folder
 	cd $temp_working_folder
 	temp_current_directory=`pwd`
@@ -252,7 +256,7 @@ HO_BUILD_LINUX_ALL_() {
 	# --------------------------------------------
 	echo Kernel Compile Started at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
-	make linux_all 2>&1 | tee -a $logfile_name
+	make linux_all -j8 2>&1 | tee -a $logfile_name
 	# --------------------------------------------
 	echo Kernel Compile Completed at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
@@ -410,7 +414,7 @@ HO_REPO_SYNC_() {
 	logfile_name=$(HO_BUILD_LOG_INIT_ 'repo_sync')
 	# --------------------------------------------
 	echo Repo Sync Started $(date) ........ | tee -a $logfile_name
-	repo sync 2>&1 | tee -a $logfile_name
+	repo sync -j8 2>&1 | tee -a $logfile_name
 	echo Repo Sync Completed $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
 	# Check the remote hung up
@@ -444,6 +448,60 @@ HO_REPO_CLEAN_() {
 }
 
 # =============================================================================
+# HO_BUILD_CLEAN_GTV_
+# -----------------------------------------------------------------------------
+HO_BUILD_CLEAN_GTV_() {
+
+	echo HO_BUILD_CLEAN_GTV_ ........
+	# --------------------------------------------
+	make clean
+	# --------------------------------------------
+	return
+
+}
+
+# =============================================================================
+# HO_BUILD_CLEAN_LINUX_
+# -----------------------------------------------------------------------------
+HO_BUILD_CLEAN_LINUX_() {
+
+	echo HO_BUILD_CLEAN_LINUX_ ........
+	# --------------------------------------------
+	make clean_linux
+	# --------------------------------------------
+	return
+
+}
+
+# =============================================================================
+# HO_BUILD_CLEAN_SDK_
+# -----------------------------------------------------------------------------
+HO_BUILD_CLEAN_SDK_() {
+
+	echo HO_BUILD_CLEAN_SDK_ ........
+	# --------------------------------------------
+	make clean_mv88de3100_sdk
+	# --------------------------------------------
+	return
+
+}
+
+# =============================================================================
+# HO_BUILD_CLEAN_ALL_
+# -----------------------------------------------------------------------------
+HO_BUILD_CLEAN_ALL_() {
+
+	echo HO_BUILD_CLEAN_ALL_ ........
+	# --------------------------------------------
+	HO_BUILD_CLEAN_GTV_
+	HO_BUILD_CLEAN_LINUX_
+	HO_BUILD_CLEAN_SDK_
+	# --------------------------------------------
+	return
+
+}
+
+# =============================================================================
 # HO_BUILD_ALL_
 # -----------------------------------------------------------------------------
 HO_BUILD_ALL_() {
@@ -467,7 +525,7 @@ HO_BUILD_ALL_() {
 HO_REPO_BRANCH_() {
 
 	temp_current_time=`date +%Y%m%d_%H%M%S`
-	temp_branch_name=$temp_current_project_name'_'$temp_current_time'_'`whoami`
+	temp_branch_name=$HO_CURRENT_PLATFORM_NAME'_'$temp_current_time'_'`whoami`
 
 	echo HO_REPO_BRANCH_ ........
 
@@ -499,7 +557,7 @@ else
 
 	if [ $1 == '/?' ] || [ $1 == 'help' ] || [ $1 == '/help' ] || [ $1 == '--help' ] ; then
 		echo 
-		echo "usage: bkos200.sh options"
+		echo "usage: $HO_CURRENT_PLATFORM_NAME.sh options"
 		echo 
 		echo "options:"
 		echo 
@@ -568,7 +626,7 @@ fi
 # =============================================================================
 
 #if [ -f ./build/envsetup.sh ]; then
-#	if [ "$TARGET_PRODUCT" != "bkos200" ] ; then
+#	if [ "$TARGET_PRODUCT" != "$HO_CURRENT_PLATFORM_NAME" ] ; then
 #		# --------------------------------------------
 #		echo Init Script Start ........
 #		if [ -f ./build/envsetup.sh ]; then
@@ -577,7 +635,7 @@ fi
 #		fi
 #	fi
 #else
-#	echo "Please Check the bkos200 source path!!!!"
+#	echo "Please Check the $HO_CURRENT_PLATFORM_NAME source path!!!!"
 #	exit 0
 #fi
 
@@ -607,9 +665,16 @@ do
 			break
 			;;
 		# --------------------------------------------
-		"inittttttttt")
+		"initt")
 		# --------------------------------------------
 			HO_BUILD_ENV_INIT_
+
+			return
+			;;
+		# --------------------------------------------
+		"init_env")
+		# --------------------------------------------
+			HO_CHECK_INIT_STATUS_
 
 			return
 			;;
@@ -715,7 +780,7 @@ do
 			return
 			;;
 		# --------------------------------------------
-		"54" | "clean")
+		"54" | "repo_clean")
 		# --------------------------------------------
 			HO_REPO_CLEAN_
 
@@ -725,6 +790,38 @@ do
 		"b" | "branch")
 		# --------------------------------------------
 			HO_REPO_BRANCH_
+
+			return
+			;;
+		# --------------------------------------------
+		"clean_gtv" | "CLEAN_GTV")
+		# --------------------------------------------
+			HO_BUILD_ENV_INIT_
+			HO_BUILD_CLEAN_GTV_
+
+			return
+			;;
+		# --------------------------------------------
+		"clean_linux" | "CLEAN_LINUX")
+		# --------------------------------------------
+			HO_BUILD_ENV_INIT_
+			HO_BUILD_CLEAN_LINUX_
+
+			return
+			;;
+		# --------------------------------------------
+		"clean_sdk" | "CLEAN_SDK")
+		# --------------------------------------------
+			HO_BUILD_ENV_INIT_
+			HO_BUILD_CLEAN_SDK_
+
+			return
+			;;
+		# --------------------------------------------
+		"clean_all" | "CLEAN_ALL")
+		# --------------------------------------------
+			HO_BUILD_ENV_INIT_
+			HO_BUILD_CLEAN_ALL_
 
 			return
 			;;
