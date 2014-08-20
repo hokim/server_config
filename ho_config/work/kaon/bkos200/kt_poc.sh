@@ -112,7 +112,7 @@ HO_CHECK_INIT_STATUS_() {
 	# --------------------------------------------
 	return
 
-} 
+}
 
 # =============================================================================
 # HO_BUILD_ENV_INIT_
@@ -146,7 +146,7 @@ HO_BUILD_LINUX_ALL_() {
 	# --------------------------------------------
 	echo Kernel Compile Started at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
-	make linux_all 2>&1 | tee -a $logfile_name
+	make linux_all -j8 2>&1 | tee -a $logfile_name
 	# --------------------------------------------
 	echo Kernel Compile Completed at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
@@ -274,7 +274,7 @@ HO_REPO_SYNC_() {
 	logfile_name=$(HO_BUILD_LOG_INIT_ 'repo_sync')
 	# --------------------------------------------
 	echo Repo Sync Started $(date) ........ | tee -a $logfile_name
-	repo sync 2>&1 | tee -a $logfile_name
+	repo sync -j8 2>&1 | tee -a $logfile_name
 	echo Repo Sync Completed $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
 	# Check the remote hung up

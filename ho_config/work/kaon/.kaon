@@ -11,4 +11,5 @@ alias kaon-script='cd $kaon_script_path'
 # For The KAON Project
 # BKO-S200
 source $kaon_script_path/bkos200/.bkos200
-
+# BG2Q4K
+source $kaon_script_path/bg2q4k/.bg2q4k

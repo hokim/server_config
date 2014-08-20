@@ -111,3 +111,6 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# Ho Kim
+#export PATH=$PATH:/opt/toolchain/armv5-marvell-eabi-softfp/bin/:/opt/toolchain/armv5-marvell-linux-gnueabi-softfp/bin/
