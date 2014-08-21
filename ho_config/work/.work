@@ -11,7 +11,7 @@ source $work_script_path/git-completion.bash
 
 # Work Alias
 alias work-script='cd $work_script_path'
-alias w-project='cd ~/archive/project'
+alias w-project='cd ~/Project'
 
 # Git Alias
 alias g-br="git branch -a -v"
