@@ -114,3 +114,5 @@ fi
 
 # Ho Kim
 #export PATH=$PATH:/opt/toolchain/armv5-marvell-eabi-softfp/bin/:/opt/toolchain/armv5-marvell-linux-gnueabi-softfp/bin/
+#export PATH=$PATH:/opt/brcm_20120706/toolchain/bin/:/opt/brcm_20120706/toolchain/arm-linux-uclibcgnueabi/bin/
+#export PLATFORM=97346b0&&export ARCH=mips&&export CROSS_COMPILE=arm-linux-uclibcgnueabi-
