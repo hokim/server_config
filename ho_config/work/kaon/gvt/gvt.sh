@@ -2,13 +2,28 @@
 
 # =============================================================================
 
-HO_CURRENT_PLATFORM_NAME=gvt
+_CURRENT_PROJECT_NAME_=gvt
+_CURRENT_DIRECTORY_=`pwd`
 _BRCM_REFSW_ROOT_=`pwd`"/GVT_brazil/bcm97346_ref_20120706"
 _BRCM_TOOLS_ROOT_=`pwd`"/brcm_20120706"
 
+# -----------------------------------------------------------------------------
+
+echo Init Script Start ........
+if [ ! -d $_BRCM_REFSW_ROOT_ ]; then
+	echo 
+	echo Please Check The Path!!!
+	return
+fi
+
+if [ ! -d $_BRCM_TOOLS_ROOT_ ]; then
+	echo 
+	echo Please Check The Path!!!
+	return
+fi
+
 # =============================================================================
 
-temp_current_directory=`pwd`
 temp_current_path=$PATH
 logfile_path=`pwd`/build_log
 
@@ -157,7 +172,8 @@ HO_SET_FACTORY_SW_ENV_() {
 
 	# --------------------------------------------
 	#setup path
-	export FACTORY_ROOT=$PRO740x_ROOT/GVT_brazil/factory_sw
+	export PRO740x_ROOT=`pwd`/GVT_brazil/bcm97346_ref_20120706
+	export FACTORY_ROOT=$PRO740x_ROOT/../factory_sw
 	export UTILS_ROOT=$FACTORY_ROOT/utils
 	export NEXUS_TOP=$_BRCM_REFSW_ROOT_/nexus
 	export BSEAV_TOP=$_BRCM_REFSW_ROOT_/BSEAV
@@ -335,7 +351,9 @@ HO_BUILD_FACTORY_SW_() {
 	echo refsw Compile Started at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
 	cd $FACTORY_ROOT
-	make 2>&1 | tee -a $logfile_name
+	_drv
+	cd $FACTORY_ROOT/factory
+	make
 	# --------------------------------------------
 	echo refsw Compile Completed at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
@@ -384,7 +402,7 @@ HO_RESTORE_ENV_() {
 
 	echo HO_RESTORE_ENV_ ........
 	# --------------------------------------------
-	cd $temp_current_directory
+	cd $_CURRENT_DIRECTORY_
 	export PATH=$temp_current_path
 	# --------------------------------------------
 	return
@@ -403,7 +421,7 @@ else
 
 	if [ $1 == '/?' ] || [ $1 == 'help' ] || [ $1 == '/help' ] || [ $1 == '--help' ] ; then
 		echo 
-		echo "usage: $HO_CURRENT_PLATFORM_NAME.sh options"
+		echo "usage: $_CURRENT_PROJECT_NAME_.sh options"
 		echo 
 		echo "options:"
 		echo 
