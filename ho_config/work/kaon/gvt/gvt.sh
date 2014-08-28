@@ -10,6 +10,7 @@ _BRCM_TOOLS_ROOT_=`pwd`"/brcm_20120706"
 
 temp_current_directory=`pwd`
 temp_current_path=$PATH
+logfile_path=`pwd`/build_log
 
 # =============================================================================
 # HO_SET_KERNEL_ENV_
@@ -193,6 +194,32 @@ HO_SELECT_BUILD_OPERATOR_() {
 }
 
 # =============================================================================
+# HO_BUILD_LOG_INIT_
+# -----------------------------------------------------------------------------
+HO_BUILD_LOG_INIT_() {
+
+	# --------------------------------------------
+	if [ ! -d $logfile_path ]; then
+		mkdir $logfile_path
+	fi
+
+	#temp_current_time=`date +%Y%m%d_%H%M%S`
+	#temp_file_name=$logfile_path/$1'_'$temp_current_time'_'`whoami`'.log'
+	temp_file_name=$logfile_path/$1'.log'
+
+	if [ -f $temp_file_name'.old' ]; then
+		rm -f $temp_file_name'.old'
+	fi
+	if [ -f $temp_file_name ]; then
+		mv $temp_file_name $temp_file_name'.old'
+	fi
+	# --------------------------------------------
+	echo $temp_file_name
+	return
+
+}
+
+# =============================================================================
 # HO_CHECK_INIT_STATUS_
 # -----------------------------------------------------------------------------
 HO_CHECK_INIT_STATUS_() {
@@ -241,14 +268,16 @@ HO_BUILD_KERNEL_FULL_() {
 
 	echo HO_BUILD_KERNEL_FULL_ ........
 	# --------------------------------------------
-	echo Kernel Compile Started at $(date) ........
+	logfile_name=$(HO_BUILD_LOG_INIT_ 'build_kernel')
+	# --------------------------------------------
+	echo Kernel Compile Started at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
 	cd $UCLINUX_BUILD_PATH
-	make defaults-7346b0 -j8
-	make distclean -j8
-	make images-7346b0 -j8
+	make defaults-7346b0 -j8 2>&1 | tee -a $logfile_name
+	make distclean -j8 2>&1 | tee -a $logfile_name
+	make images-7346b0 -j8 2>&1 | tee -a $logfile_name
 	# --------------------------------------------
-	echo Kernel Compile Completed at $(date) ........
+	echo Kernel Compile Completed at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
 	return
 
@@ -261,12 +290,14 @@ HO_BUILD_REFSW_FULL_() {
 
 	echo HO_BUILD_REFSW_FULL_ ........
 	# --------------------------------------------
-	echo refsw Compile Started at $(date) ........
+	logfile_name=$(HO_BUILD_LOG_INIT_ 'build_refsw')
+	# --------------------------------------------
+	echo refsw Compile Started at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
 	cd $BRUTUS_BUILD_PATH
-	make
+	make 2>&1 | tee -a $logfile_name
 	# --------------------------------------------
-	echo refsw Compile Completed at $(date) ........
+	echo refsw Compile Completed at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
 	return
 
@@ -279,12 +310,14 @@ HO_BUILD_DIRECTFB_() {
 
 	echo HO_BUILD_DIRECTFB_ ........
 	# --------------------------------------------
-	echo refsw Compile Started at $(date) ........
+	logfile_name=$(HO_BUILD_LOG_INIT_ 'build_directfb')
+	# --------------------------------------------
+	echo refsw Compile Started at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
 	cd $_BRCM_REFSW_ROOT_/AppLibs/opensource/directfb/build 
-	make
+	make 2>&1 | tee -a $logfile_name
 	# --------------------------------------------
-	echo refsw Compile Completed at $(date) ........
+	echo refsw Compile Completed at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
 	return
 
@@ -297,12 +330,14 @@ HO_BUILD_FACTORY_SW_() {
 
 	echo HO_BUILD_FACTORY_SW_ ........
 	# --------------------------------------------
-	echo refsw Compile Started at $(date) ........
+	logfile_name=$(HO_BUILD_LOG_INIT_ 'factory_sw')
+	# --------------------------------------------
+	echo refsw Compile Started at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
 	cd $FACTORY_ROOT
-	make
+	make 2>&1 | tee -a $logfile_name
 	# --------------------------------------------
-	echo refsw Compile Completed at $(date) ........
+	echo refsw Compile Completed at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
 	return
 
