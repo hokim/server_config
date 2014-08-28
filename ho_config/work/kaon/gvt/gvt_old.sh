@@ -523,7 +523,7 @@ do
 			HO_SET_REFSW_ENV_
 			HO_SET_FACTORY_SW_ENV_
 			HO_BUILD_FACTORY_SW_
-			HO_RESTORE_ENV_
+			#HO_RESTORE_ENV_
 
 			return
 			;;
