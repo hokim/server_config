@@ -113,9 +113,10 @@ HO_SELECT_BUILD_OPERATOR_() {
 	echo "           Select Build Operator             "
 	echo "============================================="
 	echo "  1 or kernel_all : Kernel Build             "
-	echo "  2 or directfb   : directfb Build           "
-	echo "  3 or refsw      : refsw Build              "
-	echo "  4 or factory_sw :                          "
+	echo "  2 or uclinux    : uclinux Build            "
+	echo "  3 or directfb   : directfb Build           "
+	echo "  4 or refsw      : refsw Build              "
+	echo "  5 or factory_sw :                          "
 	echo "  -----------------------------------------  "
 	echo "============================================="
 	echo "  x: Exit                                    "
@@ -200,6 +201,26 @@ HO_BUILD_KERNEL_FULL_() {
 	echo HO_BUILD_KERNEL_FULL_ ........
 	# --------------------------------------------
 	logfile_name=$(HO_BUILD_LOG_INIT_ 'build_kernel')
+	# --------------------------------------------
+	echo Kernel Compile Started at $(date) ........ | tee -a $logfile_name
+	# --------------------------------------------
+	cd $LINUX
+	make bcm7346b0_defconfig ARCH=mips -j8 2>&1 | tee -a $logfile_name
+	# --------------------------------------------
+	echo Kernel Compile Completed at $(date) ........ | tee -a $logfile_name
+	# --------------------------------------------
+	return
+
+}
+
+# =============================================================================
+# HO_BUILD_UCLINUX_
+# -----------------------------------------------------------------------------
+HO_BUILD_UCLINUX_() {
+
+	echo HO_BUILD_UCLINUX_ ........
+	# --------------------------------------------
+	logfile_name=$(HO_BUILD_LOG_INIT_ 'build_uclinux')
 	# --------------------------------------------
 	echo Kernel Compile Started at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
@@ -413,7 +434,17 @@ do
 			return
 			;;
 		# --------------------------------------------
-		"2" | "directfb")
+		"2" | "uclinux")
+		# --------------------------------------------
+			#HO_BUILD_ENV_INIT_
+			HO_SET_KERNEL_ENV_
+			HO_BUILD_UCLINUX_			
+			HO_RESTORE_ENV_
+
+			return
+			;;
+		# --------------------------------------------
+		"3" | "directfb")
 		# --------------------------------------------
 			#HO_BUILD_ENV_INIT_
 			HO_SET_REFSW_ENV_
@@ -423,7 +454,7 @@ do
 			return
 			;;
 		# --------------------------------------------
-		"3" | "refsw")
+		"4" | "refsw")
 		# --------------------------------------------
 			#HO_BUILD_ENV_INIT_
 			HO_SET_REFSW_ENV_
@@ -433,7 +464,7 @@ do
 			return
 			;;
 		# --------------------------------------------
-		"4" | "factory_sw")
+		"5" | "factory_sw")
 		# --------------------------------------------
 			#HO_BUILD_ENV_INIT_
 			HO_SET_REFSW_ENV_
