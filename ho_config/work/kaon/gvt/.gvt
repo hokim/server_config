@@ -11,8 +11,9 @@ PATH=$gvt_script_path:/opt/repo:$PATH
 # For The KAON Project
 
 #GVT
+alias go-gvt-make='make bcm7346b0_defconfig'
 alias go-gvt-old='. $gvt_script_path/gvt_old.sh'
-alias go-gvt-new='. $gvt_script_path/gvt_new.sh'
+alias go-gvt='. $gvt_script_path/gvt_new.sh'
 alias gvt-repo="repo init -u ssh://125.132.210.109:29418/brcm-gvt-phase1/default-manifest"
 
 #JAVA

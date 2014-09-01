@@ -40,7 +40,7 @@ HO_SET_KERNEL_ENV_() {
 	export UCLINUX_BUILD_PATH="$_CURRENT_DIRECTORY_/uclinux-rootfs-3.3-3.3"
 
 	#toolchains path
-	export LINUX="$_CURRENT_DIRECTORY_/$sblinux-3.3-3.3"
+	export LINUX="$_CURRENT_DIRECTORY_/stblinux-3.3-3.3"
 	export TOOLCHAIN="$_CURRENT_DIRECTORY_/stbgcc-4.5.4-2.8"
 	export PATH=$TOOLCHAIN/bin:$PATH
 
@@ -205,7 +205,8 @@ HO_BUILD_KERNEL_FULL_() {
 	echo Kernel Compile Started at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
 	cd $LINUX
-	make bcm7346b0_defconfig ARCH=mips -j8 2>&1 | tee -a $logfile_name
+	make bcm7346b0_defconfig -j8 2>&1 | tee -a $logfile_name
+	make -j8 2>&1 | tee -a $logfile_name
 	# --------------------------------------------
 	echo Kernel Compile Completed at $(date) ........ | tee -a $logfile_name
 	# --------------------------------------------
