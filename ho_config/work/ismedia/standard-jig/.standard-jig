@@ -1,0 +1,8 @@
+# ~/.standard-jig: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
+
+# PATH=~/bin:$PATH
+export standard_jig_script_path=~/ho_config/work/ismedia/standard-jig
+PATH=$standard_jig_script_path:/opt/repo:$PATH
+

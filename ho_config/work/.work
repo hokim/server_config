@@ -1,4 +1,4 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
+# ~/.work: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
@@ -37,7 +37,10 @@ alias lf='g-lf'
 alias br='g-br'
 
 # KAON
-source $work_script_path/kaon/.kaon
+#source $work_script_path/kaon/.kaon
+
+# isMedia
+source $work_script_path/ismedia/.ismedia
 
 # ExCompany
 #source $work_script_path/ExCompany/.anydata
