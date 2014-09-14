@@ -6,9 +6,12 @@
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+#export LS_COLORS=di="0;36"
+export LS_COLORS='no=00:fi=00:di=00;36:ln=00;36:pi=40;33:so=00;35:*.sh=00;31:*.tar.gz=00;31'
+
 export ho_script_path=~/ho_config
 # PATH=~/bin:$PATH
-PATH=~/bin:$ho_script_path:~/ho_config/bin:$PATH
+PATH=~/bin:$ho_script_path:$ho_script_path/bin:$PATH
 
 # alias definition
 alias ll='ls -alF'
@@ -28,7 +31,7 @@ $ '
 
 # Ho Kim's alias
 alias cls='clear'
-alias hoho='source ~/ho_config/.hokim'
+alias hoho='source $ho_script_path/.hokim'
 alias ho-config='cd $ho_script_path'
 alias ho-grep="grep -rni"
 alias ho-pgrep-u="pgrep -l -u"
@@ -74,3 +77,10 @@ alias ho-clone='git clone git@github.com:hokim/server_config.git'
 #alias ssh_sw4_3='ssh hokim@10.10.10.13'
 #alias sw4_3_mount='sudo mount -t nfs -o nolock 10.10.10.13:/home/hokim/work /home/hokim/sw4_3_work'
 #alias sw4_3_umount='sudo umount 10.10.10.13:/home/hokim/work'
+
+# Work Configurations
+source $ho_script_path/work/.work
+
+#
+# The End
+#

@@ -3,6 +3,5 @@
 # for examples
 
 # PATH=~/bin:$PATH
-export standard_jig_script_path=~/ho_config/work/ismedia/standard-jig
-PATH=$standard_jig_script_path:/opt/repo:$PATH
-
+export standard_jig_script_path=$ho_script_path/work/ismedia/standard-jig
+PATH=$standard_jig_script_path:$PATH

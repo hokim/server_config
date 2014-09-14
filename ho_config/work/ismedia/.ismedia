@@ -2,7 +2,7 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-export ismedia_script_path=~/ho_config/work/ismedia
+export ismedia_script_path=$ho_script_path/work/ismedia
 PATH=$ismedia_script_path:$PATH
 
 # ISMEDIA #

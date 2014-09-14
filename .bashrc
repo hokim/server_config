@@ -98,9 +98,6 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # Ho Kim's Configurations
 source ~/ho_config/.hokim
 
-# Work Configurations
-source ~/ho_config/work/.work
-
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -112,7 +109,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# Ho Kim
-#export PATH=$PATH:/opt/toolchain/armv5-marvell-eabi-softfp/bin/:/opt/toolchain/armv5-marvell-linux-gnueabi-softfp/bin/
-#export PATH=$PATH:/opt/brcm_20120706/toolchain/bin/:/opt/brcm_20120706/toolchain/arm-linux-uclibcgnueabi/bin/
-#export PLATFORM=97346b0&&export ARCH=mips&&export CROSS_COMPILE=arm-linux-uclibcgnueabi-
+#export PATH=~/bin:/opt/jdk6/jdk1.6.0_45/bin:$PATH
+#export JAVA_HOME=/opt/jdk6/jdk1.6.0_45/
+#export ANDROID_JAVA_HOME=/opt/jdk6/jdk1.6.0_45/

@@ -3,7 +3,7 @@
 # for examples
 
 # PATH=~/bin:$PATH
-export work_script_path=~/ho_config/work
+export work_script_path=$ho_script_path/work
 PATH=$work_script_path:$PATH
 
 # Common
