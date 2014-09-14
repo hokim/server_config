@@ -11,7 +11,7 @@ export LS_COLORS='no=00:fi=00:di=00;36:ln=00;36:pi=40;33:so=00;35:*.sh=00;31:*.t
 
 export ho_script_path=~/ho_config
 # PATH=~/bin:$PATH
-PATH=~/bin:$ho_script_path:$ho_script_path/bin:$PATH
+PATH=$ho_script_path:$ho_script_path/bin:$PATH
 
 # alias definition
 alias ll='ls -alF'
