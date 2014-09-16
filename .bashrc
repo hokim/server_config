@@ -109,6 +109,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-#export PATH=~/bin:/opt/jdk6/jdk1.6.0_45/bin:$PATH
-#export JAVA_HOME=/opt/jdk6/jdk1.6.0_45/
-#export ANDROID_JAVA_HOME=/opt/jdk6/jdk1.6.0_45/
+#export JAVA_HOME=/opt/jdk6/jdk1.6.0_45
+#export PATH=$JAVA_HOME/bin:$PATH
+#export ANDROID_JAVA_HOME=$JAVA_HOME
