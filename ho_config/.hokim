@@ -37,6 +37,7 @@ alias ho-grep="grep -rni"
 alias ho-pgrep-u="pgrep -l -u"
 alias ho-pkill-user="pkill -U"
 alias ho-ps-grep='ps -ef | grep'
+alias ho-df='df -h;lsblk'
 
 alias touch-all='find . -name "*.c" -exec touch {} \;'
 alias touch-file='touch *.c'
