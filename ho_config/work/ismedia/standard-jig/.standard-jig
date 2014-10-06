@@ -10,3 +10,5 @@ PATH=$standard_jig_script_path:$PATH
 
 alias gc-8974='git clone git@git:standard-jig-8974.git'
 alias go-8974='. $standard_jig_script_path/standard-jig.sh'
+alias go='cd ..;source ./build.sh'
+alias gc='cd ..;source ./clean.sh'
