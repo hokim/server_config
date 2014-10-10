@@ -82,7 +82,7 @@ alias ho-clone='git clone git@github.com:hokim/server_config.git'
 # Work Configurations
 source $ho_script_path/work/.work
 
-w-project
+work
 
 #
 # The End

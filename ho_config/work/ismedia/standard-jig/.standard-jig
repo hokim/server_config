@@ -8,6 +8,8 @@ PATH=$standard_jig_script_path:$PATH
 
 # Standard-Jig 8974
 
+alias gc-8074='git clone git@git:standard-jig-8074.git'
+alias go-8074='. $standard_jig_script_path/standard-jig.sh'
 alias gc-8974='git clone git@git:standard-jig-8974.git'
 alias go-8974='. $standard_jig_script_path/standard-jig.sh'
 alias go='cd ..;source ./build.sh'
