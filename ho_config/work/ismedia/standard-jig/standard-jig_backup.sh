@@ -12,31 +12,21 @@ MAGENTA='\e[35;1m'
 CYAN='\e[36;1m'
 WHITE='\e[37;1m'
 ENDCOLOR='\e[0m'
-ITCVER="KK_V22"
-WORKDIR=`pwd`
-BUILDROOT="$WORKDIR/APQ8074_LNX.LA.3.5-01620-8x74.0_$ITCVER"
-PATCH_DIR="$WORKDIR/patches"
-CAFTAG="LNX.LA.3.5-01620-8x74.0.xml"
-DB_PRODUCT_STRING="APQ8074 Snapdragon 800 Dragonboard"
 # =============================================================================
 # DragonBoard 8974 Configurations
 # -----------------------------------------------------------------------------
+ITCVER="KK_V21"
 HO_CURRENT_PLATFORM_BUILD_ID=APQ8074_$ITCVER
+HO_BUILD_ROOT_PATH=`pwd`"/APQ8074_LNX.LA.3.5-01620-8x74.0_$ITCVER"
 HO_CURRENT_PLATFORM_NAME=msm8974
 HO_LUNCH_MENU_CHOICES=$HO_CURRENT_PLATFORM_NAME'-userdebug'
-HO_BACKUP_CURRENT_DIR=`pwd`
-HO_BACKUP_PATH=$PATH
-# =============================================================================
-
-if [ -d "./APQ8074_LNX.LA.3.5-01620-8x74.0_$ITCVER" ]; then
-	cd "./APQ8074_LNX.LA.3.5-01620-8x74.0_$ITCVER"
-fi
-
 # =============================================================================
 
 temp_current_time=`date +%Y%m%d_%H%M%S`
+temp_current_directory=`pwd`
+temp_current_path=$PATH
 temp_make_update_path=./emmc_images
-logfile_path=./build_log
+logfile_path=`pwd`/build_log
 
 # =============================================================================
 # HO_FIND_STRING_IN_THE_FILES_
@@ -115,7 +105,8 @@ HO_WORKING_DIR_INIT_() {
 	temp_working_folder=$HO_CURRENT_PLATFORM_NAME'_'$temp_current_time'_'`whoami`'_'$1
 	mkdir $temp_working_folder
 	cd $temp_working_folder
-	HO_BACKUP_CURRENT_DIR=`pwd`
+	temp_current_directory=`pwd`
+	logfile_path=`pwd`/build_log
 	# --------------------------------------------
 	return
 
@@ -153,6 +144,7 @@ HO_MAKE_EMMC_IMAGES_() {
 
 	echo HO_MAKE_EMMC_IMAGES_ ........
 	# --------------------------------------------
+	cd $HO_BUILD_ROOT_PATH
 	if [ -d $temp_make_update_path ]; then
 		rm -rf $temp_make_update_path
 	fi
@@ -192,6 +184,7 @@ HO_MAKE_EMMC_IMAGES_() {
 	else
 		exit
 	fi
+	cd $temp_current_directory
 	# --------------------------------------------
 	return
 
@@ -204,6 +197,7 @@ HO_BUILD_ENV_INIT_() {
 
 	echo HO_BUILD_ENV_INIT_ ........
 	# --------------------------------------------
+	cd $HO_BUILD_ROOT_PATH
 	if [ -f ./build/envsetup.sh ]; then
 		. build/envsetup.sh
 		lunch $HO_LUNCH_MENU_CHOICES
@@ -384,7 +378,7 @@ do
 		# --------------------------------------------
 			HO_BUILD_ENV_INIT_
 
-			break
+			return
 			;;
 		# --------------------------------------------
 		"test")
@@ -398,14 +392,14 @@ do
 			HO_BUILD_ENV_INIT_
 			HO_BUILD_ANDROID_ALL_
 
-			break
+			return
 			;;
 		# --------------------------------------------
 		"9" | "e")
 		# --------------------------------------------
 			HO_MAKE_EMMC_IMAGES_
 
-			break
+			return
 			;;
 		# --------------------------------------------
 		"0" | "all")
@@ -415,21 +409,21 @@ do
 			HO_BUILD_ALL_
 			HO_MAKE_EMMC_IMAGES_
 
-			break
+			return
 			;;
 		# --------------------------------------------
 		"53")
 		# --------------------------------------------
 			HO_GIT_CLONE_
 
-			break
+			return
 			;;
 		# --------------------------------------------
 		"b" | "branch")
 		# --------------------------------------------
 			HO_GIT_BRANCH_
 
-			break
+			return
 			;;
 		# --------------------------------------------
 		"clean" | "CLEAN")
@@ -437,7 +431,7 @@ do
 			HO_BUILD_ENV_INIT_
 			HO_BUILD_CLEAN_
 
-			break
+			return
 			;;
 		# --------------------------------------------
 		"full" | "FULL")
@@ -449,7 +443,7 @@ do
 			HO_BUILD_ALL_
 			HO_MAKE_EMMC_IMAGES_
 
-			break
+			return
 			;;
 	# ************************************************
 	esac
@@ -470,7 +464,7 @@ fi
 
 echo " "
 echo "The End."
-cd $HO_BACKUP_CURRENT_DIR
-export PATH=$HO_BACKUP_PATH
+cd $temp_current_directory
+export PATH=$temp_current_path
 
 # =============================================================================
