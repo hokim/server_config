@@ -8,6 +8,8 @@ PATH=$ismedia_script_path:$PATH
 # ISMEDIA #
 alias ismedia-script='cd $ismedia_script_path'
 
+alias exthdd-4th='cd /extHDD/4th/file_server/hokim_backup'
+
 # For The ISMEDIA Project
 # Standard JIG
 source $ismedia_script_path/standard-jig/.standard-jig
