@@ -13,3 +13,8 @@ alias gc='source $standard_jig_script_path/apq8074_clean.sh'
 alias g-c='git clone git@git:LNX.LA.3.5-01620-8x74.0.git'
 alias app='source isMediaDefect-app.sh'
 alias g='go'
+
+#JAVA
+#export PATH=/usr/lib/jvm/java-7-openjdk-amd64/bin:$PATH
+#export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+#export JAVA_HOME=/opt/jdk6/jdk1.6.0_45
