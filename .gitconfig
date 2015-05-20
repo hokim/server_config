@@ -2,7 +2,7 @@
 	ui = auto
 [user]
 	email = hokim@ismedia.co.kr
-	name = hokim 
+	name = hokim
 [alias]
 	br = branch -a -v
 	chid = "!f() { git log -1 $1 | grep Change-Id; }; f"

@@ -1,21 +1,23 @@
-# ~/.standard-jig: executed by bash(1) for non-login shells.
+# ~/.stand-alone: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
 # PATH=~/bin:$PATH
-export standard_jig_script_path=$ho_script_path/work/ismedia/standard-jig
-PATH=$standard_jig_script_path:$PATH
+export stand_alone_script_path=$ho_script_path/work/ismedia/stand-alone
+PATH=$stand_alone_script_path:$PATH
 
-# Standard-Jig 8974
+# Stand-Alone
 
-#alias go='source $standard_jig_script_path/apq8074_build.sh'
-#alias gc='source $standard_jig_script_path/apq8074_clean.sh'
+#alias go='source $stand_alone_script_path/apq8074_build.sh'
+#alias gc='source $stand_alone_script_path/apq8074_clean.sh'
 alias go='source ./go.sh'
 alias g-c='git clone git@git:LNX.LA.3.5-01620-8x74.0.git'
 alias app='source isMediaDefect-app.sh'
 alias g='go'
 alias r-init='repo init --repo-url=/opt/tools/repo.git -u git@git:stand-alone/manifest.git'
 alias r-sync='repo sync'
+
+alias go-tmp='source ~/ho_config/work/ismedia/stand-alone/stand-alone.sh'
 
 #JAVA
 #export PATH=/usr/lib/jvm/java-7-openjdk-amd64/bin:$PATH

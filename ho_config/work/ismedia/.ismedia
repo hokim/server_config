@@ -12,4 +12,7 @@ alias exthdd-4th='cd /extHDD/4th/file_server/hokim_backup'
 
 # For The ISMEDIA Project
 # Standard JIG
-source $ismedia_script_path/standard-jig/.standard-jig
+#source $ismedia_script_path/standard-jig/.standard-jig
+
+# Stand-Alone
+source $ismedia_script_path/stand-alone/.stand-alone
