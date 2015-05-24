@@ -9,6 +9,28 @@ HISTFILESIZE=2000
 #export LS_COLORS=di="0;36"
 export LS_COLORS='no=00:fi=00:di=00;36:ln=00;36:pi=40;33:so=00;35:*.sh=00;31:*.tar.gz=00;31'
 
+# ANSI color codes
+HO_RS="\[\033[0m\]"    # reset
+HO_HC="\[\033[1m\]"    # hicolor
+HO_UL="\[\033[4m\]"    # underline
+HO_INV="\[\033[7m\]"   # inverse background and foreground
+HO_FBLK="\[\033[30m\]" # foreground black
+HO_FRED="\[\033[31m\]" # foreground red
+HO_FGRN="\[\033[32m\]" # foreground green
+HO_FYEL="\[\033[33m\]" # foreground yellow
+HO_FBLE="\[\033[34m\]" # foreground blue
+HO_FMAG="\[\033[35m\]" # foreground magenta
+HO_FCYN="\[\033[36m\]" # foreground cyan
+HO_FWHT="\[\033[37m\]" # foreground white
+HO_BBLK="\[\033[40m\]" # background black
+HO_BRED="\[\033[41m\]" # background red
+HO_BGRN="\[\033[42m\]" # background green
+HO_BYEL="\[\033[43m\]" # background yellow
+HO_BBLE="\[\033[44m\]" # background blue
+HO_BMAG="\[\033[45m\]" # background magenta
+HO_BCYN="\[\033[46m\]" # background cyan
+HO_BWHT="\[\033[47m\]" # background white
+
 export ho_script_path=~/ho_config
 # PATH=~/bin:$PATH
 PATH=$ho_script_path:$ho_script_path/bin:/usr/local/bin:$PATH
@@ -20,14 +42,15 @@ alias dir='dir -laF --color=auto'
 alias vdir='vdir --color=auto'
 alias rm='rm -rf'
 
-#PS1="[\u:\w\a]\\$ "
-#export PS1='\[\033]0;\w\007
-#\033[32m\]\u@\h \[\033[33m\w\033[0m\]
+#if [ "$color_prompt" = yes ]; then
+#else
+#fi
+
+#export PS1='\u@\h [\w]
 #$ '
 
-export PS1='\[\033]0;\W\007
-\033[32m\]\u(\h) \[\033[33m\w\033[0m\]
-$ '
+export PS1="$HO_HC$HO_FCYN\u@\h $HO_RS[$HO_HC$HO_FYEL\w$HO_RS]
+$HO_HC$HO_FGRN$ $HO_RS"
 
 # Ho Kim's alias
 alias cls='clear'
