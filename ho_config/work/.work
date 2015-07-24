@@ -32,6 +32,9 @@ alias g-ll="git log --pretty=oneline --abbrev-commit"
 alias g-st="git status -sb"
 alias g-tree="git log --graph --decorate --pretty=oneline --abbrev-commit --all"
 
+alias g-clean="source git-clean.sh"
+
+alias r-clean="source repo-clean.sh"
 alias r-forall="repo forall -c git branch -d"
 
 alias lf='g-lf'

@@ -84,6 +84,7 @@ HO_SELECT_BUILD_OPERATOR_() {
 	echo "  52 or sync     : repo sync                 "
 	echo "  53             : repo init & sync          "
 	echo "  54             : repo clean                "
+	echo "  55             : git clean                 "
 	echo "  b ro branch    : branch                    "
 	echo "============================================="
 	echo "  x: Exit                                    "
@@ -312,6 +313,23 @@ HO_REPO_CLEAN_() {
 	return
 
 }
+
+# =============================================================================
+# HO_GIT_CLEAN_
+# -----------------------------------------------------------------------------
+HO_GIT_CLEAN_() {
+
+	echo clean ........
+	# --------------------------------------------
+	echo Git Clean Started $(date) ........
+	git clean -d -f
+	git reset --hard HEAD
+	git checkout m/master
+	echo Git Clean Completed $(date) ........
+	# --------------------------------------------
+	return
+
+} 
 
 # =============================================================================
 # HO_BUILD_CLEAN_GTV_
@@ -562,6 +580,13 @@ do
 		"54" | "repo_clean")
 		# --------------------------------------------
 			HO_REPO_CLEAN_
+
+			return
+			;;
+		# --------------------------------------------
+		"55" | "git_clean")
+		# --------------------------------------------
+			HO_GIT_CLEAN_
 
 			return
 			;;

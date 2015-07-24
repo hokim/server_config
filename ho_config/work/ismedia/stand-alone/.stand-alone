@@ -11,6 +11,7 @@ PATH=$stand_alone_script_path:$PATH
 #alias go='source $stand_alone_script_path/apq8074_build.sh'
 #alias gc='source $stand_alone_script_path/apq8074_clean.sh'
 alias go='source ./go.sh'
+alias clean='make clean'
 alias g-c='git clone git@git:LNX.LA.3.5-01620-8x74.0.git'
 alias app='source isMediaDefect-app.sh'
 alias g='go'
